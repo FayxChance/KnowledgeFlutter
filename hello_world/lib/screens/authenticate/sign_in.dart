@@ -9,6 +9,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     // Text field state
@@ -37,6 +39,7 @@ class _SignInState extends State<SignIn> {
                   height: 20.0,
                 ),
                 TextFormField(
+                  validator: (val) => val.isEmpty ? "Champ erroné" : null,
                   onChanged: (val) {
                     setState(() {
                       mail = val;
@@ -47,6 +50,8 @@ class _SignInState extends State<SignIn> {
                   height: 20.0,
                 ),
                 TextFormField(
+                  validator: (val) =>
+                      val.length < 6 ? "Minimum 6 caractere" : null,
                   onChanged: (val) {
                     setState(() {
                       password = val;
@@ -60,7 +65,9 @@ class _SignInState extends State<SignIn> {
                 RaisedButton(
                   color: Colors.tealAccent,
                   child: Text("Log In", style: TextStyle(color: Colors.white)),
-                  onPressed: () async {},
+                  onPressed: () async {
+                    if (_formKey.currentState.validate()) {}
+                  },
                 )
               ],
             ),
