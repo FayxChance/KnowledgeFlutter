@@ -2,39 +2,69 @@ import 'package:flutter/material.dart';
 import 'package:hello_world/services/auth.dart';
 
 class SignIn extends StatefulWidget {
-  SignIn({Key key}) : super(key: key);
-
+  final Function toogleView;
+  SignIn({this.toogleView});
   @override
   _SignInState createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
-  final AuthService _authService = AuthService();
-
   @override
   Widget build(BuildContext context) {
+    // Text field state
+    String mail = '';
+    String password = '';
     return Scaffold(
-      backgroundColor: Colors.tealAccent[50],
+      backgroundColor: Colors.teal[50],
       appBar: AppBar(
-        backgroundColor: Colors.tealAccent[300],
-        elevation: 0.0,
-        title: Text('Sign in'),
-      ),
+          elevation: 0.0,
+          title: Text('Log in'),
+          backgroundColor: Colors.teal[300],
+          actions: [
+            FlatButton.icon(
+                onPressed: () {
+                  widget.toogleView();
+                },
+                icon: Icon(Icons.person),
+                label: Text("Register"))
+          ]),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: RaisedButton(
-          child: Text(" Sign in anon"),
-          onPressed: () async {
-            dynamic result = await _authService.signInAnon();
-            if (result == null) {
-              print("error signing in anon");
-            } else {
-              print('Signed in');
-              print(result);
-            }
-          },
-        ),
-      ),
+          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+          child: Form(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 20.0,
+                ),
+                TextFormField(
+                  onChanged: (val) {
+                    setState(() {
+                      mail = val;
+                    });
+                  },
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                TextFormField(
+                  onChanged: (val) {
+                    setState(() {
+                      password = val;
+                    });
+                  },
+                  obscureText: true,
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                RaisedButton(
+                  color: Colors.tealAccent,
+                  child: Text("Log In", style: TextStyle(color: Colors.white)),
+                  onPressed: () async {},
+                )
+              ],
+            ),
+          )),
     );
   }
 }
