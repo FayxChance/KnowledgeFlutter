@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "919002583514",
+    "firebase_url": "https://knowledgepower-467cd.firebaseio.com",
+    "project_id": "knowledgepower-467cd",
+    "storage_bucket": "knowledgepower-467cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919002583514:android:59a9ff68f846cfecd5f0e3",
+        "android_client_info": {
+          "package_name": "com.elord.hello_world"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919002583514-k47mf3oh9ae1ku2e9btjb9pp7t68lac1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl26cCy0ogGWBIPb-2S8h7dvL8diD3r_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919002583514-k47mf3oh9ae1ku2e9btjb9pp7t68lac1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
