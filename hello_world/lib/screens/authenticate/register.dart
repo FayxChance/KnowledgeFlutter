@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toogleView;
-  SignIn({this.toogleView});
+  Register({this.toogleView});
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _authService = AuthService();
   final _formKey = GlobalKey<FormState>();
+  // Text field state
   String mail = '';
   String password = '';
   String error = '';
+
   @override
   Widget build(BuildContext context) {
-    // Text field state
-
     return Scaffold(
       backgroundColor: Colors.teal[50],
       appBar: AppBar(
           elevation: 0.0,
-          title: Text('Log in'),
+          title: Text('Register'),
           backgroundColor: Colors.teal[300],
           actions: [
             FlatButton.icon(
@@ -30,7 +30,7 @@ class _SignInState extends State<SignIn> {
                   widget.toogleView();
                 },
                 icon: Icon(Icons.person),
-                label: Text("Sign in"))
+                label: Text("Log In"))
           ]),
       body: Container(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
@@ -58,7 +58,6 @@ class _SignInState extends State<SignIn> {
                   onChanged: (val) {
                     setState(() {
                       password = val;
-                      print(password);
                     });
                   },
                   obscureText: true,
@@ -68,13 +67,12 @@ class _SignInState extends State<SignIn> {
                 ),
                 RaisedButton(
                   color: Colors.tealAccent,
-                  child: Text("Log In", style: TextStyle(color: Colors.white)),
+                  child:
+                      Text("Register", style: TextStyle(color: Colors.white)),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      print(mail);
-                      print(password);
                       dynamic result = await _authService
-                          .logWithMailAndPassword(mail, password);
+                          .registerWithMailAndPassword(mail, password);
                       if (result == null) {
                         setState(() {
                           error = 'Error';
