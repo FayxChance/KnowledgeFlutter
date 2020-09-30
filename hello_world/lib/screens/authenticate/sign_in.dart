@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/services/auth.dart';
+import 'package:hello_world/shared/const.dart';
 
 class SignIn extends StatefulWidget {
   final Function toogleView;
@@ -42,6 +43,8 @@ class _SignInState extends State<SignIn> {
                   height: 20.0,
                 ),
                 TextFormField(
+                  decoration:
+                      TextInputDecoration.name("Email").textInputDecoration,
                   validator: (val) => val.isEmpty ? "Champ erroné" : null,
                   onChanged: (val) {
                     setState(() {
@@ -53,6 +56,8 @@ class _SignInState extends State<SignIn> {
                   height: 20.0,
                 ),
                 TextFormField(
+                  decoration:
+                      TextInputDecoration.name("Password").textInputDecoration,
                   validator: (val) =>
                       val.length < 6 ? "Minimum 6 caractere" : null,
                   onChanged: (val) {
